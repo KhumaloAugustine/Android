@@ -1,5 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Primary Color -->
+    <color name="primary_light">#1976D2</color>
+    <color name="primary_dark">#64B5F6</color>
+
+    <!-- Background Color -->
+    <color name="background_light">#FFFFFF</color>
+    <color name="background_dark">#303030</color>
+
+    <!-- Text Color -->
+    <color name="text_light">#212121</color>
+    <color name="text_dark">#FFFFFF</color>
+
+    <!-- Accent Color -->
+    <color name="accent_light">#FF4081</color>
+    <color name="accent_dark">#FF80AB</color>
+
+    <!-- Divider Color -->
+    <color name="divider_light">#E0E0E0</color>
+    <color name="divider_dark">#757575</color>
+
+    <!-- Error/Warning Color -->
+    <color name="error_light">#FF5722</color>
+    <color name="error_dark">#FF8A65</color>
+
+    <!-- Success Color -->
+    <color name="success_light">#4CAF50</color>
+    <color name="success_dark">#81C784</color>
+
+    <!-- Custom Colors -->
+    <color name="custom_color">#FFA500</color> <!-- Orange -->
+    <!-- Add more custom colors as needed -->
 </resources>
