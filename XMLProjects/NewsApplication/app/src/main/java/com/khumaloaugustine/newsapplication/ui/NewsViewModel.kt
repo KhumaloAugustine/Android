@@ -4,7 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.os.Build
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -27,6 +26,16 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository) : Andr
     var newSearchQuery: String? = null
     var oldSearchQuery: String? = null
 
+    init {
+        getHeadlines("sa")
+    }
+
+    fun getHeadlines(countryCode: String) = viewModelScope.launch {
+        headlinesInternet(countryCode)
+    }
+    fun searchNews(searchQuery: String) = viewModelScope.launch {
+        searchNewsInternet(searchQuery)
+    }
     private fun handleHeadlinesResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
