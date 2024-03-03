@@ -11,7 +11,7 @@ import retrofit2.Response
 class NewsViewModel(app: Application, val newsRepository: NewsRepository) : AndroidViewModel(app) {
     val headlines: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var headlinesPage = 1
-    var headlineResponse: NewsResponse? = null
+    var headlinesResponse: NewsResponse? = null
 
     val searchNews: MutableLiveData<Resource<NewsResponse>> = MutableLiveData()
     var searchNewsPage = 1
@@ -23,14 +23,14 @@ class NewsViewModel(app: Application, val newsRepository: NewsRepository) : Andr
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 headlinesPage++
-                if (headlineResponse == null) {
-                    headlineResponse = resultResponse
+                if (headlinesResponse == null) {
+                    headlinesResponse = resultResponse
                 } else {
-                    val oldArticles = headlineResponse?.articles
+                    val oldArticles = headlinesResponse?.articles
                     val newArticles = resultResponse.articles
                     oldArticles?.addAll(newArticles)
                 }
-                return Resource.Success(headlineResponse ?: resultResponse)
+                return Resource.Success(headlinesResponse ?: resultResponse)
             }
         }
         return Resource.Error(response.message())
