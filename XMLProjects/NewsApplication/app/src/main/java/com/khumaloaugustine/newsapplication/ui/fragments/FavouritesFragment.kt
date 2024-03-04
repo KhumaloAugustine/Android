@@ -5,18 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.khumaloaugustine.newsapplication.R
+import com.khumaloaugustine.newsapplication.adapters.NewsAdapter
+import com.khumaloaugustine.newsapplication.databinding.FragmentFavouritesBinding
+import com.khumaloaugustine.newsapplication.ui.NewsViewModel
+
 class FavouritesFragment : Fragment() {
+    lateinit var newsViewModel: NewsViewModel
+    lateinit var newsAdapter: NewsAdapter
+    lateinit var binding: FragmentFavouritesBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = FragmentFavouritesBinding.bind(view)
     }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favourites, container, false)
+    private fun setupFavouritesRecycler(){
+        newsAdapter = NewsAdapter()
+        binding.recyclerFavourites.apply {
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(activity)
+        }
     }
 }
