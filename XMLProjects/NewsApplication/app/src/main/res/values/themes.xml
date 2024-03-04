@@ -12,6 +12,6 @@
     <style name="Theme.NewsApplication" parent="Base.Theme.NewsApplication" />
 
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/custom_color</item>
+        <item name="android:color">@color/divider_light</item>
     </style>
 </resources>
