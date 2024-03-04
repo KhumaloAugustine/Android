@@ -18,7 +18,7 @@ import com.khumaloaugustine.newsapplication.databinding.FragmentFavouritesBindin
 import com.khumaloaugustine.newsapplication.ui.NewsActivity
 import com.khumaloaugustine.newsapplication.ui.NewsViewModel
 
-class FavouritesFragment : Fragment() {
+class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
     lateinit var newsViewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
     lateinit var binding: FragmentFavouritesBinding

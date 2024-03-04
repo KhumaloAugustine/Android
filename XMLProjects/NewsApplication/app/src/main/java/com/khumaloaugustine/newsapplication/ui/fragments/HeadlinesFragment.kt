@@ -24,7 +24,7 @@ import com.khumaloaugustine.newsapplication.ui.NewsViewModel
 import com.khumaloaugustine.newsapplication.util.Constants
 import com.khumaloaugustine.newsapplication.util.Resource
 
-class HeadlinesFragment : Fragment() {
+class HeadlinesFragment : Fragment(R.layout.fragment_headlines) {
     lateinit var newsViewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
     lateinit var retryButton: Button
