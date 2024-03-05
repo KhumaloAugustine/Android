@@ -15,11 +15,11 @@ import com.khumaloaugustine.newsapplication.models.Article
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    lateinit var articleImage: ImageView
-    lateinit var articleSource: TextView
-    lateinit var articleTitle: TextView
-    lateinit var articleDescription: TextView
-    lateinit var articleDateTime: TextView
+    private lateinit var articleImage: ImageView
+    private lateinit var articleSource: TextView
+    private lateinit var articleTitle: TextView
+    private lateinit var articleDescription: TextView
+    private lateinit var articleDateTime: TextView
 
     private val differCallback = object : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
@@ -53,7 +53,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
 
         holder.itemView.apply {
             Glide.with(this).load(article.urlToImage).into(articleImage)
-            articleSource.text = article.source?.name
+            articleSource.text = article.source.name
             articleTitle.text = article.title
             articleDescription.text = article.description
             articleDateTime.text = article.publishedAt
