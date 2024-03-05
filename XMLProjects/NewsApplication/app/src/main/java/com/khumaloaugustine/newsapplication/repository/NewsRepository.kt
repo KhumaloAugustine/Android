@@ -4,7 +4,7 @@ import com.khumaloaugustine.newsapplication.api.RetrofitInstance
 import com.khumaloaugustine.newsapplication.database.ArticleDatabase
 import com.khumaloaugustine.newsapplication.models.Article
 
-class NewsRepository(val database: ArticleDatabase) {
+class NewsRepository(private val database: ArticleDatabase) {
     suspend fun getHeadlines(countryCode: String, pageNumber: Int) =
         RetrofitInstance.api.getHeadLines(countryCode, pageNumber)
 
