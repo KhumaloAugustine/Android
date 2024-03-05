@@ -45,7 +45,9 @@ class NewsViewModel(app: Application, private val newsRepository: NewsRepository
                 } else {
                     val oldArticles = headlinesResponse?.articles
                     val newArticles = resultResponse.articles
-                    oldArticles?.addAll(newArticles)
+                    if (newArticles != null) {
+                        oldArticles?.addAll(newArticles)
+                    }
                 }
                 return Resource.Success(headlinesResponse ?: resultResponse)
             }
@@ -64,7 +66,9 @@ class NewsViewModel(app: Application, private val newsRepository: NewsRepository
                     searchNewsPage++
                     val oldArticles = searchNewsResponse?.articles
                     val newArticles = resultResponse.articles
-                    oldArticles?.addAll(newArticles)
+                    if (newArticles != null) {
+                        oldArticles?.addAll(newArticles)
+                    }
                 }
                 return Resource.Success(searchNewsResponse ?: resultResponse)
             }

@@ -77,7 +77,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     hideProgressBar()
                     hideErrorMessages()
                     response.data?.let { newsResponse ->
-                        newsAdapter.differ.submitList(newsResponse.articles.toList())
+                        newsAdapter.differ.submitList(newsResponse.articles?.toList())
                         val totalPages = newsResponse.totalResults / Constants.QUERY_PAGE_SIZE + 2
                         isLastPage = newsViewModel.searchNewsPage == totalPages
                         if (isLastPage) {
