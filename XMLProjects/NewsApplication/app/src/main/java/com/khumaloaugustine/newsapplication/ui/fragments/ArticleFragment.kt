@@ -12,9 +12,9 @@ import com.khumaloaugustine.newsapplication.ui.NewsActivity
 import com.khumaloaugustine.newsapplication.ui.NewsViewModel
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
-    lateinit var newsViewModel: NewsViewModel
-    val args: ArticleFragmentArgs by navArgs()
-    lateinit var binding: FragmentArticleBinding
+    private lateinit var newsViewModel: NewsViewModel
+    private val args: ArticleFragmentArgs by navArgs()
+    private lateinit var binding: FragmentArticleBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,9 +23,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         val article = args.article
         binding.webView.apply {
             webViewClient = WebViewClient()
-            article.url?.let {
-                loadUrl(it)
-            }
+            loadUrl(article.url)
         }
         binding.fab.setOnClickListener {
             newsViewModel.addToFavourites(article)
