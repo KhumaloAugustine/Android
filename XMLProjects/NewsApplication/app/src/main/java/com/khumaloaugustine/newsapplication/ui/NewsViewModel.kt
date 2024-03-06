@@ -36,7 +36,7 @@ class NewsViewModel(app: Application, private val newsRepository: NewsRepository
     fun searchNews(searchQuery: String) = viewModelScope.launch {
         searchNewsInternet(searchQuery)
     }
-    private fun handleHeadlinesResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
+    private fun handleHeadlinesResponse(response: Response<NewsResponse?>): Resource<NewsResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 headlinesPage++
@@ -55,7 +55,7 @@ class NewsViewModel(app: Application, private val newsRepository: NewsRepository
         return Resource.Error(response.message())
     }
 
-    private fun handleSearchNewsResponse(response: Response<NewsResponse>): Resource<NewsResponse> {
+    private fun handleSearchNewsResponse(response: Response<NewsResponse?>): Resource<NewsResponse> {
         if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 if (searchNewsResponse == null || newSearchQuery != oldSearchQuery) {
