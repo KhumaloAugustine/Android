@@ -19,15 +19,26 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentArticleBinding.bind(view)
-        newsViewModel = (activity as NewsActivity).newsViewModel
-        val article = args.article
-        binding.webView.apply {
-            webViewClient = WebViewClient()
-            loadUrl(article.url)
+
+        val activity = activity as? NewsActivity
+        activity?.let {
+            newsViewModel = it.newsViewModel
         }
-        binding.fab.setOnClickListener {
-            newsViewModel.addToFavourites(article)
-            Snackbar.make(view, "Added to favourites", Snackbar.LENGTH_LONG).show()
+
+        val article = args.article
+        article?.let {
+            binding.webView.apply {
+                webViewClient = WebViewClient()
+                loadUrl(it.url)
+            }
+            binding.fab.setOnClickListener { _ ->
+                if (::newsViewModel.isInitialized) {
+                    newsViewModel.addToFavourites(it)
+                    Snackbar.make(view, "Added to favourites", Snackbar.LENGTH_LONG).show()
+                } else {
+                    Snackbar.make(view, "Failed to add to favourites", Snackbar.LENGTH_LONG).show()
+                }
+            }
         }
     }
 }
